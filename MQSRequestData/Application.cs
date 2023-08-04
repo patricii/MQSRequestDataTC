@@ -45,19 +45,19 @@ namespace MQSRequestData
             if (erroMsg == string.Empty)
             {
                 labelStatus.Text = "Page loaded successfully!";
-                //MessageBox.Show("MQS Data Request downloaded successfully!");
+                MessageBox.Show("MQS Data Request downloaded successfully!");
             }
             else
             {
                 labelStatus.Text = "Page Error: " + erroMsg;
-                // MessageBox.Show("Page Error: " + erroMsg);
+                MessageBox.Show("Page Error: " + erroMsg);
             }
 
         }
         private void buttonRun_Click(object sender, EventArgs e)
         {
             runApp();
-            //this.Close();
+            Environment.Exit(0);
         }
         public void webBrowser1_NewWindow(object sender, CancelEventArgs e)
         {
@@ -316,7 +316,6 @@ namespace MQSRequestData
                 {
                     sw.Write(cleanPage);
                 }
-
                 directoryName = pathSaveFile + "\\DailyMQSData.xls";
 
                 //clean data for csv convertion by another tool
@@ -489,5 +488,6 @@ namespace MQSRequestData
                 textBoxSave.Text = folderBrowserDialog1.SelectedPath;
             }
         }
+    
     }
 }
