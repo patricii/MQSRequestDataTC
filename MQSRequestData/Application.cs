@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
+
 namespace MQSRequestData
 {
     public partial class ApkMQS : MetroFramework.Forms.MetroForm
@@ -56,7 +57,6 @@ namespace MQSRequestData
         private void buttonRun_Click(object sender, EventArgs e)
         {
             runApp();
-
             //this.Close();
         }
         public void webBrowser1_NewWindow(object sender, CancelEventArgs e)
@@ -136,7 +136,7 @@ namespace MQSRequestData
 
                     do
                     {
-                        System.Windows.Forms.Application.DoEvents();
+                        Application.DoEvents();
                         Thread.Sleep(1);
                     } while ((bool)((Dictionary<string, object>)webComponent.Tag)["Navigated"] == false);
 
@@ -196,7 +196,7 @@ namespace MQSRequestData
                         throw new Exception(errorMessage);
 
                     webComponent.Dispose();
-                }                
+                }
 
             }
             catch (Exception error)
@@ -260,7 +260,7 @@ namespace MQSRequestData
                     webComponent.Tag = WebInfos;
                     do
                     {
-                        Application.DoEvents();
+                        System.Windows.Forms.Application.DoEvents();
                         Thread.Sleep(1);
                     } while ((bool)((Dictionary<string, object>)webComponent.Tag)["Navigated"] == false);
 
@@ -274,7 +274,7 @@ namespace MQSRequestData
                     setYieldParameters(webComponent);
                     do
                     {
-                        Application.DoEvents();
+                        System.Windows.Forms.Application.DoEvents();
                         Thread.Sleep(1);
                     } while ((bool)((Dictionary<string, object>)webComponent.Tag)["Navigated"] == false);
 
@@ -289,8 +289,6 @@ namespace MQSRequestData
 
                     webComponent.Dispose();
                 }
-
-
             }
             catch (Exception error)
             {
@@ -299,45 +297,53 @@ namespace MQSRequestData
             return errorMessage;
 
         }
-      
+
         public void documentTextParser(string documentText)
         {
             documentText = documentText.Substring(documentText.LastIndexOf("border=\"1\" rules=\"all\" cellSpacing=\"0\">") + 39);
             documentText = documentText.Replace("<TBODY>", "<HTML><HEAD></HEAD><BODY><FORM><TABLE><TBODY>");
             string cleanPage = documentText;
-         
+
             DateTime today = DateTime.Now;
-
-            string pathSaveFile = textBoxSave.Text;
-            if (!Directory.Exists(pathSaveFile))
-                Directory.CreateDirectory(pathSaveFile);
-
-            string directoryName = pathSaveFile + "\\DailyMQSData.html";
-
-
-            using (StreamWriter sw = File.CreateText(directoryName))
+            try
             {
-                sw.Write(cleanPage);
+                string pathSaveFile = textBoxSave.Text;
+                if (!Directory.Exists(pathSaveFile))
+                    Directory.CreateDirectory(pathSaveFile);
+
+                string directoryName = pathSaveFile + "\\DailyMQSData.html";
+                using (StreamWriter sw = File.CreateText(directoryName))
+                {
+                    sw.Write(cleanPage);
+                }
+
+                directoryName = pathSaveFile + "\\DailyMQSData.xls";
+
+                //clean data for csv convertion by another tool
+                cleanPage = cleanPage.Replace("PYield %", "PYield");
+                cleanPage = cleanPage.Replace("Prime Pass", "PrimePass");
+                cleanPage = cleanPage.Replace("Prime Fail", "PrimeFail");
+                cleanPage = cleanPage.Replace("Prime Handle", "PrimeHandle");
+                cleanPage = cleanPage.Replace("TotYield %", "TotYield");
+                cleanPage = cleanPage.Replace("Tot Pass", "TotPass");
+                cleanPage = cleanPage.Replace("Tot Fail", "TotFail");
+                cleanPage = cleanPage.Replace("Tot Handle", "TotHandle");
+                cleanPage = cleanPage.Replace("Avg PASS Time", "AvgPASSTime");
+                cleanPage = cleanPage.Replace("%", "");
+
+                using (StreamWriter sw = File.CreateText(directoryName))
+                {
+                    sw.Write(cleanPage);
+                }
+
             }
-            directoryName = pathSaveFile + "\\DailyMQSData.xls";
-            //clean data for csv convertion by another tool
-            cleanPage = cleanPage.Replace("PYield %", "PYield");
-            cleanPage = cleanPage.Replace("Prime Pass", "PrimePass");
-            cleanPage = cleanPage.Replace("Prime Fail", "PrimeFail");
-            cleanPage = cleanPage.Replace("Prime Handle", "PrimeHandle");
-            cleanPage = cleanPage.Replace("TotYield %", "TotYield");
-            cleanPage = cleanPage.Replace("Tot Pass", "TotPass");
-            cleanPage = cleanPage.Replace("Tot Fail", "TotFail");
-            cleanPage = cleanPage.Replace("Tot Handle", "TotHandle");
-            cleanPage = cleanPage.Replace("Avg PASS Time", "AvgPASSTime");
-            cleanPage = cleanPage.Replace("%", "");
-
-            using (StreamWriter sw = File.CreateText(directoryName))
+            catch (Exception ex)
             {
-                sw.Write(cleanPage);
+                MessageBox.Show("Error: " + ex);
             }
 
         }
+
         public void loginMQS(WebBrowser webComponent)
         {
 
@@ -449,7 +455,7 @@ namespace MQSRequestData
                 webComponent.Navigate(url);
                 do
                 {
-                    Application.DoEvents();
+                    System.Windows.Forms.Application.DoEvents();
                     Thread.Sleep(1);
                 } while ((bool)((Dictionary<string, object>)webComponent.Tag)["Navigated"] == false);
 
