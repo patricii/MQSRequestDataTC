@@ -7,7 +7,7 @@ namespace MQSRequestData
 {
     class SendEmail
     {
-        public void sendEmail(string mailUser, string mailPassword, string emailTo, string emailFrom, string emailSubject,string emailBody, string smtpAddress, int port)
+        public void sendEmail(string mailUser, string mailPassword, string emailTo, string emailFrom, string emailSubject, string emailBody, string smtpAddress, int port)
         {
             try
             {
@@ -18,10 +18,11 @@ namespace MQSRequestData
                 mail.Body = emailBody;
                 mail.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient(smtpAddress, port);
-                smtp.EnableSsl = true;
+                //smtp.EnableSsl = true;               
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential(mailUser, mailPassword);
                 smtp.Send(mail);
+                MessageBox.Show("Email sent successfully!");
             }
             catch (SmtpException ex)
             {
@@ -32,5 +33,6 @@ namespace MQSRequestData
                 MessageBox.Show("Exception has occured: " + ex.Message);
             }
         }
+
     }
 }
