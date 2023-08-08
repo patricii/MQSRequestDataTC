@@ -137,7 +137,7 @@ namespace MQSRequestData
 
                     do
                     {
-                        System.Windows.Forms.Application.DoEvents();
+                        Application.DoEvents();
                         Thread.Sleep(1);
                     } while ((bool)((Dictionary<string, object>)webComponent.Tag)["Navigated"] == false);
 
@@ -167,7 +167,7 @@ namespace MQSRequestData
                     webComponent.Tag = WebInfos;
                     do
                     {
-                        System.Windows.Forms.Application.DoEvents();
+                        Application.DoEvents();
                         Thread.Sleep(1);
                     } while ((bool)((Dictionary<string, object>)webComponent.Tag)["Navigated"] == false);
 
@@ -181,15 +181,12 @@ namespace MQSRequestData
                     setYieldParameters(webComponent);
                     do
                     {
-                        System.Windows.Forms.Application.DoEvents();
+                        Application.DoEvents();
                         Thread.Sleep(1);
                     } while ((bool)((Dictionary<string, object>)webComponent.Tag)["Navigated"] == false);
 
                     if (!string.IsNullOrEmpty(((Dictionary<string, object>)webComponent.Tag)["NavigationError"].ToString()))
                         throw new Exception(((Dictionary<string, object>)webComponent.Tag)["NavigationError"].ToString());
-
-                    //Report Page
-                    //exportData(webComponent);
 
                     documentTextParser(webComponent.DocumentText);
 
@@ -410,7 +407,7 @@ namespace MQSRequestData
                 webComponent.Navigate(url);
                 do
                 {
-                    System.Windows.Forms.Application.DoEvents();
+                    Application.DoEvents();
                     Thread.Sleep(1);
                 } while ((bool)((Dictionary<string, object>)webComponent.Tag)["Navigated"] == false);
 
