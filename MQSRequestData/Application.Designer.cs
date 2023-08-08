@@ -334,6 +334,7 @@
             this.textBoxMailUser.Name = "textBoxMailUser";
             this.textBoxMailUser.Size = new System.Drawing.Size(257, 20);
             this.textBoxMailUser.TabIndex = 0;
+            this.textBoxMailUser.Text = "@flex.com";
             // 
             // textBoxMailPassword
             // 
@@ -386,7 +387,7 @@
             this.textBoxMailTo.Name = "textBoxMailTo";
             this.textBoxMailTo.Size = new System.Drawing.Size(257, 20);
             this.textBoxMailTo.TabIndex = 6;
-            this.textBoxMailTo.UseSystemPasswordChar = true;
+            this.textBoxMailTo.Text = "@flex.com";
             // 
             // ApkMQS
             // 

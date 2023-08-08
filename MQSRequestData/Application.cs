@@ -490,7 +490,7 @@ namespace MQSRequestData
             else
             {
                 SendEmail sm = new SendEmail();
-                sm.sendEmail(textBoxMailUser.Text, textBoxMailPassword.Text, textBoxMailTo.Text, textBoxMailUser.Text, "[MQSRequestData] - App Notify", "MQSDAILYDATA DATABASE UPDATED", "smtp.gmail.com",587);
+                sm.sendEmail(textBoxMailUser.Text, textBoxMailPassword.Text, textBoxMailTo.Text, textBoxMailUser.Text, "[MQSRequestData] - App Notify", "MQSDAILYDATA DATABASE UPDATED", "smtp.office365.com", 587);
             }
         }
     }
