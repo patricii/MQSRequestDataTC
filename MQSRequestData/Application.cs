@@ -57,7 +57,7 @@ namespace MQSRequestData
         private void buttonRun_Click(object sender, EventArgs e)
         {
             runApp();
-            Environment.Exit(0);
+            Close();
         }
         public void webBrowser1_NewWindow(object sender, CancelEventArgs e)
         {

@@ -26,13 +26,10 @@ namespace MQSRequestData
 
                 foreach (var row in doc.DocumentNode.SelectNodes("//tr[td]"))
                 {
-                    if (!table.Rows.Contains("***Total***"))
-                        table.Rows.Add(row.SelectNodes("td").Select(td => td.InnerText).ToArray());
+                    table.Rows.Add(row.SelectNodes("td").Select(td => td.InnerText).ToArray());
                 }
 
-
                 StringBuilder sb = new StringBuilder();
-
                 string[] columnNames = table.Columns.Cast<DataColumn>().
                                                   Select(column => column.ColumnName).
                                                   ToArray();
@@ -40,14 +37,19 @@ namespace MQSRequestData
 
                 foreach (DataRow row in table.Rows)
                 {
-                    string[] fields = row.ItemArray.Select(field => field.ToString()).
-                                                    ToArray();
-                    sb.AppendLine(string.Join(",", fields));
+                    if (!row.ItemArray[2].ToString().Contains("***Total***"))
+                    {
+                        string[] fields = row.ItemArray.Select(field => field.ToString()).ToArray();
+                        sb.AppendLine(string.Join(",", fields));
+                    }
                 }
 
                 File.WriteAllText(apk.textBoxSave.Text + @"\DailyMQSData.csv", sb.ToString());
             }
-            catch { }
+            catch (Exception ex)
+            {
+                string errorMessaeg = ex.ToString();
+            }
 
 
 
