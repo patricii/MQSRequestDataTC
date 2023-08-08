@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
-using System.Net.Mime;
+using System.Windows.Forms;
 
 namespace MQSRequestData
 {
@@ -25,11 +25,11 @@ namespace MQSRequestData
             }
             catch (SmtpException ex)
             {
-                throw new ApplicationException("SmtpException has occured: " + ex.Message);
+                MessageBox.Show("SmtpException has occured: " + ex.Message);
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show("Exception has occured: " + ex.Message);
             }
         }
     }

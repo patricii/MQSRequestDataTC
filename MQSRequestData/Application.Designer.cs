@@ -54,10 +54,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.buttonFolder = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBoxMailUser = new System.Windows.Forms.TextBox();
+            this.textBoxMailPassword = new System.Windows.Forms.TextBox();
+            this.labelMailUser = new System.Windows.Forms.Label();
+            this.labelMailPassword = new System.Windows.Forms.Label();
+            this.buttonSendMail = new System.Windows.Forms.Button();
+            this.labelDeliveryTo = new System.Windows.Forms.Label();
+            this.textBoxMailTo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonRun
@@ -119,7 +128,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 373);
+            this.label2.Location = new System.Drawing.Point(8, 499);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 12);
             this.label2.TabIndex = 6;
@@ -303,11 +312,88 @@
             this.buttonFolder.UseVisualStyleBackColor = true;
             this.buttonFolder.Click += new System.EventHandler(this.buttonFolder_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBoxMailTo);
+            this.groupBox4.Controls.Add(this.labelDeliveryTo);
+            this.groupBox4.Controls.Add(this.buttonSendMail);
+            this.groupBox4.Controls.Add(this.labelMailPassword);
+            this.groupBox4.Controls.Add(this.labelMailUser);
+            this.groupBox4.Controls.Add(this.textBoxMailPassword);
+            this.groupBox4.Controls.Add(this.textBoxMailUser);
+            this.groupBox4.Location = new System.Drawing.Point(22, 364);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(484, 117);
+            this.groupBox4.TabIndex = 18;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Send E-mail";
+            // 
+            // textBoxMailUser
+            // 
+            this.textBoxMailUser.Location = new System.Drawing.Point(99, 21);
+            this.textBoxMailUser.Name = "textBoxMailUser";
+            this.textBoxMailUser.Size = new System.Drawing.Size(257, 20);
+            this.textBoxMailUser.TabIndex = 0;
+            // 
+            // textBoxMailPassword
+            // 
+            this.textBoxMailPassword.Location = new System.Drawing.Point(99, 47);
+            this.textBoxMailPassword.Name = "textBoxMailPassword";
+            this.textBoxMailPassword.Size = new System.Drawing.Size(257, 20);
+            this.textBoxMailPassword.TabIndex = 1;
+            this.textBoxMailPassword.UseSystemPasswordChar = true;
+            // 
+            // labelMailUser
+            // 
+            this.labelMailUser.AutoSize = true;
+            this.labelMailUser.Location = new System.Drawing.Point(7, 28);
+            this.labelMailUser.Name = "labelMailUser";
+            this.labelMailUser.Size = new System.Drawing.Size(63, 13);
+            this.labelMailUser.TabIndex = 2;
+            this.labelMailUser.Text = "E-mail User:";
+            // 
+            // labelMailPassword
+            // 
+            this.labelMailPassword.AutoSize = true;
+            this.labelMailPassword.Location = new System.Drawing.Point(6, 54);
+            this.labelMailPassword.Name = "labelMailPassword";
+            this.labelMailPassword.Size = new System.Drawing.Size(87, 13);
+            this.labelMailPassword.TabIndex = 3;
+            this.labelMailPassword.Text = "E-mail Password:";
+            // 
+            // buttonSendMail
+            // 
+            this.buttonSendMail.Location = new System.Drawing.Point(398, 65);
+            this.buttonSendMail.Name = "buttonSendMail";
+            this.buttonSendMail.Size = new System.Drawing.Size(75, 46);
+            this.buttonSendMail.TabIndex = 4;
+            this.buttonSendMail.Text = "Send E-mail";
+            this.buttonSendMail.UseVisualStyleBackColor = true;
+            this.buttonSendMail.Click += new System.EventHandler(this.buttonSendMail_Click);
+            // 
+            // labelDeliveryTo
+            // 
+            this.labelDeliveryTo.AutoSize = true;
+            this.labelDeliveryTo.Location = new System.Drawing.Point(6, 101);
+            this.labelDeliveryTo.Name = "labelDeliveryTo";
+            this.labelDeliveryTo.Size = new System.Drawing.Size(54, 13);
+            this.labelDeliveryTo.TabIndex = 5;
+            this.labelDeliveryTo.Text = "E-mail To:";
+            // 
+            // textBoxMailTo
+            // 
+            this.textBoxMailTo.Location = new System.Drawing.Point(99, 94);
+            this.textBoxMailTo.Name = "textBoxMailTo";
+            this.textBoxMailTo.Size = new System.Drawing.Size(257, 20);
+            this.textBoxMailTo.TabIndex = 6;
+            this.textBoxMailTo.UseSystemPasswordChar = true;
+            // 
             // ApkMQS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 389);
+            this.ClientSize = new System.Drawing.Size(527, 515);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.buttonFolder);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox3);
@@ -328,6 +414,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,6 +449,14 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button buttonFolder;
         public System.Windows.Forms.TextBox textBoxSave;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button buttonSendMail;
+        private System.Windows.Forms.Label labelMailPassword;
+        private System.Windows.Forms.Label labelMailUser;
+        private System.Windows.Forms.TextBox textBoxMailPassword;
+        private System.Windows.Forms.TextBox textBoxMailUser;
+        private System.Windows.Forms.TextBox textBoxMailTo;
+        private System.Windows.Forms.Label labelDeliveryTo;
     }
 }
 

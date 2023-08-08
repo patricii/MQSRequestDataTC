@@ -481,6 +481,18 @@ namespace MQSRequestData
 
         }
 
+        private void buttonSendMail_Click(object sender, EventArgs e)
+        {
+            if (textBoxMailUser.Text == "" || textBoxMailPassword.Text == "")
+            {
+                MessageBox.Show("Preencha corretamente os campos E-mail user e E-mail Password!!");
+            }
+            else
+            {
+                SendEmail sm = new SendEmail();
+                sm.sendEmail(textBoxMailUser.Text, textBoxMailPassword.Text, textBoxMailTo.Text, textBoxMailUser.Text, "[MQSRequestData] - App Notify", "MQSDAILYDATA DATABASE UPDATED", "smtp.gmail.com",587);
+            }
+        }
     }
 
 }
