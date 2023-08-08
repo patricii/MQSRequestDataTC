@@ -339,7 +339,6 @@
         private System.Windows.Forms.Label labelStatus;
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxSave;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxLogin;
@@ -361,6 +360,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button buttonFolder;
+        public System.Windows.Forms.TextBox textBoxSave;
     }
 }
 
