@@ -13,6 +13,7 @@ namespace MQSRequestData
 
         public void htmlToDT(string htmlCode)
         {
+            htmlCode = htmlCode.Replace(",", ".");
             try
             {
                 ApkMQS apk = new ApkMQS();
@@ -34,19 +35,16 @@ namespace MQSRequestData
                 StringBuilder sb = new StringBuilder();
                 string[] columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
                 sb.AppendLine(string.Join(",", columnNames));
+                string itemSubst = string.Empty;
 
                 foreach (DataRow row in dataTable.Rows)
-                {
-                    for (int i = 0; i < row.ItemArray.Length; i++)
-                    {
-                        if (row.ItemArray[i].ToString().Contains(","))
-                            row.ItemArray[i]  = row.ItemArray[i].ToString().Replace(",", "");
-                    }
+                {                                     
                     if (!row.ItemArray[2].ToString().Contains("***Total***"))
                     {
                         string[] fields = row.ItemArray.Select(field => field.ToString()).ToArray();
                         sb.AppendLine(string.Join(",", fields));
                     }
+
                 }
 
                 File.WriteAllText(apk.textBoxSave.Text + @"\DailyMQSData.csv", sb.ToString());
