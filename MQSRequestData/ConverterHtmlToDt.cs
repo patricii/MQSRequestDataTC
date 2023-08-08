@@ -4,13 +4,11 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Globalization;
 
 namespace MQSRequestData
 {
     class ConverterHtmlToDt
     {
-
         public void htmlToCsv(string htmlCode)
         {
             htmlCode = htmlCode.Replace(",", ".");

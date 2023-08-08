@@ -61,4 +61,3 @@ C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\bin\Debug\Microsoft.IO.R
 C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\bin\Debug\HtmlAgilityPack.dll
 C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\bin\Debug\HtmlAgilityPack.pdb
 C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\bin\Debug\HtmlAgilityPack.xml
-C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\obj\Debug\MQSRequestData.csprojAssemblyReference.cache
