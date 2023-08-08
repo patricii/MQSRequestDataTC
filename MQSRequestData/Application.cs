@@ -23,6 +23,7 @@ namespace MQSRequestData
         string password = string.Empty;
         string erroMsg = string.Empty;
         string strAction = string.Empty;
+        ConverterHtmlToDt conv = new ConverterHtmlToDt();
 
         private void webpage_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
@@ -461,8 +462,6 @@ namespace MQSRequestData
                 {
                     sw.Write(cleanPage);
                 }
-                directoryName = pathSaveFile + "\\DailyMQSData.xls";
-
                 //clean data for csv convertion by another tool
                 cleanPage = cleanPage.Replace("PYield %", "PYield");
                 cleanPage = cleanPage.Replace("Prime Pass", "PrimePass");
@@ -475,23 +474,13 @@ namespace MQSRequestData
                 cleanPage = cleanPage.Replace("Avg PASS Time", "AvgPASSTime");
                 cleanPage = cleanPage.Replace("%", "");
 
-                using (StreamWriter sw = File.CreateText(directoryName))
-                {
-                    sw.Write(cleanPage);
-                }
-                converterHtmlToDataTable(cleanPage);
+                conv.htmlToCsv(cleanPage);
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex);
             }
-
-        }
-        private void converterHtmlToDataTable(string htmlCode)
-        {
-            ConverterHtmlToDt conv = new ConverterHtmlToDt();
-            conv.htmlToDT(htmlCode);
 
         }
        

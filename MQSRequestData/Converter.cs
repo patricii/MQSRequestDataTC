@@ -11,7 +11,7 @@ namespace MQSRequestData
     class ConverterHtmlToDt
     {
 
-        public void htmlToDT(string htmlCode)
+        public void htmlToCsv(string htmlCode)
         {
             htmlCode = htmlCode.Replace(",", ".");
             try
