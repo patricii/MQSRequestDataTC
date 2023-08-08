@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
 
+
 namespace MQSRequestData
 {
     class SendEmail
@@ -22,7 +23,7 @@ namespace MQSRequestData
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential(mailUser, mailPassword);
                 smtp.Send(mail);
-                MessageBox.Show("Email sent successfully!");
+                MessageBox.Show("E-mail sent successfully!");
             }
             catch (SmtpException ex)
             {
@@ -32,7 +33,7 @@ namespace MQSRequestData
             {
                 MessageBox.Show("Exception has occured: " + ex.Message);
             }
-        }
-
+        }        
+  
     }
 }
