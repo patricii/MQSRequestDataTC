@@ -4,6 +4,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 
 namespace MQSRequestData
 {
@@ -16,27 +17,31 @@ namespace MQSRequestData
             {
                 ApkMQS apk = new ApkMQS();
                 HtmlDocument doc = new HtmlDocument();
+                DataTable dataTable = new DataTable();
+
                 doc.LoadHtml(htmlCode);
                 var headers = doc.DocumentNode.SelectNodes("//tr/th");
-                DataTable table = new DataTable();
                 foreach (HtmlNode header in headers)
                 {
-                    table.Columns.Add(header.InnerText);
+                    dataTable.Columns.Add(header.InnerText);
                 }
 
                 foreach (var row in doc.DocumentNode.SelectNodes("//tr[td]"))
                 {
-                    table.Rows.Add(row.SelectNodes("td").Select(td => td.InnerText).ToArray());
+                    dataTable.Rows.Add(row.SelectNodes("td").Select(td => td.InnerText).ToArray());
                 }
 
                 StringBuilder sb = new StringBuilder();
-                string[] columnNames = table.Columns.Cast<DataColumn>().
-                                                  Select(column => column.ColumnName).
-                                                  ToArray();
+                string[] columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
                 sb.AppendLine(string.Join(",", columnNames));
 
-                foreach (DataRow row in table.Rows)
+                foreach (DataRow row in dataTable.Rows)
                 {
+                    for (int i = 0; i < row.ItemArray.Length; i++)
+                    {
+                        if (row.ItemArray[i].ToString().Contains(","))
+                            row.ItemArray[i]  = row.ItemArray[i].ToString().Replace(",", "");
+                    }
                     if (!row.ItemArray[2].ToString().Contains("***Total***"))
                     {
                         string[] fields = row.ItemArray.Select(field => field.ToString()).ToArray();
@@ -50,8 +55,6 @@ namespace MQSRequestData
             {
                 string errorMessaeg = ex.ToString();
             }
-
-
 
         }
 
