@@ -19,7 +19,7 @@ namespace MQSRequestData
                 mail.Body = emailBody;
                 mail.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient(smtpAddress, port);
-                //smtp.EnableSsl = true;               
+                smtp.EnableSsl = true;               
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential(mailUser, mailPassword);
                 smtp.Send(mail);
