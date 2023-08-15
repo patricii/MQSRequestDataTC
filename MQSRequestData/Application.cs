@@ -30,7 +30,6 @@ namespace MQSRequestData
             ((Dictionary<string, object>)((WebBrowser)sender).Tag)["Navigated"] = false;
 
         }
-
         public void runApp()
         {
             if (checkBoxLogin.Checked)
@@ -218,17 +217,12 @@ namespace MQSRequestData
                     metroTabControl1.SelectTab(metroTabControl1.TabCount - 1);
                     webComponent.Parent = tab;
                     webComponent.Dock = DockStyle.Fill;
-
                     webComponent.Navigating += new WebBrowserNavigatingEventHandler(webpage_Navigating);
                     webComponent.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webpage_DocumentCompleted);
                     webComponent.NewWindow += new CancelEventHandler(webBrowser1_NewWindow);
-
-
                     Dictionary<string, object> WebInfos = new Dictionary<string, object>() { { "NavigationError", "" }, { "Navigated", false }, { "URL_Title", urlTitle } };
-
                     webComponent.Tag = WebInfos;
                     webComponent.Navigate(url);
-
                     do
                     {
                         Application.DoEvents();
@@ -245,13 +239,9 @@ namespace MQSRequestData
                         Thread.Sleep(1000);
                         errorMessage = StartBrowser(webComponent, url, urlTitle);
                     }
-
                     //metroTabControl1.SelectedTab.Text = webComponent.DocumentTitle;
-
                     navigateYieldTab(webComponent);
-
                     //New TAB "MQS - Yield Report"
-
                     webComponent.Navigate(urlYield);
                     WebInfos = new Dictionary<string, object>() { { "NavigationError", "" }, { "Navigated", false }, { "URL_Title", yield } };
                     webComponent.Tag = WebInfos;
@@ -267,7 +257,6 @@ namespace MQSRequestData
                     //metroTabControl1.SelectedTab.Text = webComponent.DocumentTitle;
                     labelStatus.Text = "Extrating Data...";
                     Thread.Sleep(2000);
-
                     setYieldParameters(webComponent);
                     do
                     {
@@ -292,14 +281,12 @@ namespace MQSRequestData
                 errorMessage = error.Message;
             }
             return errorMessage;
-
         }
 
         public void loginMQS(WebBrowser webComponent)
         {
 
             strAction = "EnterLogin";
-
             HtmlElement UserElement = webComponent.Document.GetElementById("ctl00_main_txtUserID");
             if (UserElement == null)
                 throw new Exception("Cannot find User Name Element");
@@ -314,7 +301,6 @@ namespace MQSRequestData
             if (buttonLoginElement == null)
                 throw new Exception("Cannot find button login Element");
             buttonLoginElement.InvokeMember("click");
-
             Thread.Sleep(2000);
 
         }
@@ -368,13 +354,11 @@ namespace MQSRequestData
             string hourStart = textBoxStartHour.Text;
             timeT1.SetAttribute("value", hourStart);
 
-
             HtmlElement timeT2 = webComponent.Document.GetElementById("TextBox7");
             if (timeT2 == null)
                 throw new Exception("Cannot find LocationList Element");
             string hourEnd = textBoxEndHour.Text;
             timeT2.SetAttribute("value", hourEnd);
-
 
             HtmlElement button3Element = webComponent.Document.GetElementById("Button3");
             if (button3Element == null)
@@ -393,9 +377,7 @@ namespace MQSRequestData
                     webComponent.Navigating += new WebBrowserNavigatingEventHandler(webpage_Navigating);
                     webComponent.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webpage_DocumentCompleted);
                     webComponent.NewWindow += new CancelEventHandler(webBrowser1_NewWindow);
-
                     Dictionary<string, object> WebInfos = new Dictionary<string, object>() { { "NavigationError", "" }, { "Navigated", false }, { "URL_Title", "" } };
-
                     webComponent.Tag = WebInfos;
                 }
 
@@ -420,9 +402,7 @@ namespace MQSRequestData
                 labelStatus.Text = "Page Error: " + errorMessage;
                 //MessageBox.Show("Error: " + errorMessage);
             }
-
             return errorMessage;
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -445,7 +425,6 @@ namespace MQSRequestData
             documentText = documentText.Substring(documentText.LastIndexOf("border=\"1\" rules=\"all\" cellSpacing=\"0\">") + 39);
             documentText = documentText.Replace("<TBODY>", "<HTML><HEAD></HEAD><BODY><FORM><TABLE><TBODY>");
             string cleanPage = documentText;
-
             DateTime today = DateTime.Now;
             try
             {
@@ -469,6 +448,13 @@ namespace MQSRequestData
                 cleanPage = cleanPage.Replace("Tot Handle", "TotHandle");
                 cleanPage = cleanPage.Replace("Avg PASS Time", "AvgPASSTime");
                 cleanPage = cleanPage.Replace("%", "");
+                cleanPage = cleanPage.Replace("5GFR1BDTST", "T5GFR1BDTST");
+
+                directoryName = pathSaveFile + "\\DailyMQSData.xls";
+                using (StreamWriter sw = File.CreateText(directoryName))
+                {
+                    sw.Write(cleanPage);
+                }
 
                 conv.htmlToCsv(cleanPage);
 
@@ -477,8 +463,6 @@ namespace MQSRequestData
             {
                 MessageBox.Show("Error: " + ex);
             }
-
         }       
     }
-
 }

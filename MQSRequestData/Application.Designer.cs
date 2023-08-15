@@ -91,7 +91,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 60);
+            this.label1.Location = new System.Drawing.Point(49, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 3;
@@ -99,11 +99,11 @@
             // 
             // textBoxSave
             // 
-            this.textBoxSave.Location = new System.Drawing.Point(172, 53);
+            this.textBoxSave.Location = new System.Drawing.Point(133, 53);
             this.textBoxSave.Name = "textBoxSave";
-            this.textBoxSave.Size = new System.Drawing.Size(144, 20);
+            this.textBoxSave.Size = new System.Drawing.Size(183, 20);
             this.textBoxSave.TabIndex = 4;
-            this.textBoxSave.Text = "C:\\temp";
+            this.textBoxSave.Text = "C:\\ProductDataMQS\\rawdata";
             // 
             // pictureBox1
             // 
