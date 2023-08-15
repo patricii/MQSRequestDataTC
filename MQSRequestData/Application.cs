@@ -24,6 +24,11 @@ namespace MQSRequestData
         string strAction = string.Empty;
         ConverterHtmlToDt conv = new ConverterHtmlToDt();
 
+        /*protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            buttonRun_Click(null, null);
+        }*/
         private void webpage_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
             ((Dictionary<string, object>)((WebBrowser)sender).Tag)["NavigationError"] = string.Empty;
@@ -44,19 +49,18 @@ namespace MQSRequestData
             if (erroMsg == string.Empty)
             {
                 labelStatus.Text = "Page loaded successfully!";
-                MessageBox.Show("MQS Data Request downloaded successfully!");
+                //MessageBox.Show("MQS Data Request downloaded successfully!");
             }
             else
             {
-                labelStatus.Text = "Page Error: " + erroMsg;
-                MessageBox.Show("Page Error: " + erroMsg);
+                labelStatus.Text = "Page Error: " + erroMsg;                
+                //MessageBox.Show("Page Error: " + erroMsg);
             }
-
+            Close();
         }
         private void buttonRun_Click(object sender, EventArgs e)
         {
             runApp();
-            Close();
         }
         public void webBrowser1_NewWindow(object sender, CancelEventArgs e)
         {

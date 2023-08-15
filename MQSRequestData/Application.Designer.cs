@@ -261,6 +261,7 @@
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(103, 20);
             this.dateTimePickerStart.TabIndex = 0;
+            this.dateTimePickerStart.Value = new System.DateTime(2023, 8, 15, 0, 0, 0, 0);
             // 
             // groupBox3
             // 
