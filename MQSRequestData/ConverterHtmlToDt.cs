@@ -11,7 +11,7 @@ namespace MQSRequestData
     {
         public void htmlToCsv(string htmlCode)
         {
-            htmlCode = htmlCode.Replace(",", ".");
+            htmlCode = htmlCode.Replace(",", "");
             try
             {
                 ApkMQS apk = new ApkMQS();

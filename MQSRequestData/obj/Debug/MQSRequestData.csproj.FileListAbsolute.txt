@@ -28,4 +28,7 @@ C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\obj\Debug\MQSRequestData
 C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\obj\Debug\MQSRequestData.csproj.CopyComplete
 C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\obj\Debug\MQSRequestData.exe
 C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\obj\Debug\MQSRequestData.pdb
+C:\ProductDataMQS\MQSRequestData\MQSRequestData.exe.config
+C:\ProductDataMQS\MQSRequestData\MQSRequestData.exe
+C:\ProductDataMQS\MQSRequestData\MQSRequestData.pdb
 C:\DEVELOPMENT PROJECTS\MQSRequestDataTC\MQSRequestData\obj\Debug\MQSRequestData.csprojAssemblyReference.cache

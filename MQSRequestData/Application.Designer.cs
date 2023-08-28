@@ -48,12 +48,12 @@
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBoxSites = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.buttonFolder = new System.Windows.Forms.Button();
+            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -197,12 +197,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dateTimePickerStart);
             this.groupBox2.Controls.Add(this.textBoxEndHour);
             this.groupBox2.Controls.Add(this.textBoxStartHour);
             this.groupBox2.Controls.Add(this.dateTimePickerEnd);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.dateTimePickerStart);
             this.groupBox2.Location = new System.Drawing.Point(22, 137);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(242, 100);
@@ -253,16 +253,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Start:";
             // 
-            // dateTimePickerStart
-            // 
-            this.dateTimePickerStart.CustomFormat = "MM/dd/yyyy";
-            this.dateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerStart.Location = new System.Drawing.Point(6, 32);
-            this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(103, 20);
-            this.dateTimePickerStart.TabIndex = 0;
-            this.dateTimePickerStart.Value = new System.DateTime(2023, 8, 15, 0, 0, 0, 0);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.comboBoxSites);
@@ -303,6 +293,15 @@
             this.buttonFolder.Text = "...";
             this.buttonFolder.UseVisualStyleBackColor = true;
             this.buttonFolder.Click += new System.EventHandler(this.buttonFolder_Click);
+            // 
+            // dateTimePickerStart
+            // 
+            this.dateTimePickerStart.CustomFormat = "MM/dd/yyyy";
+            this.dateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerStart.Location = new System.Drawing.Point(6, 31);
+            this.dateTimePickerStart.Name = "dateTimePickerStart";
+            this.dateTimePickerStart.Size = new System.Drawing.Size(103, 20);
+            this.dateTimePickerStart.TabIndex = 6;
             // 
             // ApkMQS
             // 
@@ -353,7 +352,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
         private System.Windows.Forms.TextBox textBoxEndHour;
         private System.Windows.Forms.TextBox textBoxStartHour;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -362,6 +360,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button buttonFolder;
         public System.Windows.Forms.TextBox textBoxSave;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
     }
 }
 
